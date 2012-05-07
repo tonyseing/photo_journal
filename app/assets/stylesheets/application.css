@@ -24,3 +24,9 @@ div.name_field, div.description_field
 {
 	display: none;
 }
+
+img.show_image
+{
+	width: 50%;
+	height: 50%;
+}

@@ -1,20 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @photo.name %>
-</p>
+
 
 <p>
-  <b>Description:</b>
-  <%= @photo.description %>
-</p>
-
-<p>
-  <b>Dt:</b>
+  <b>Date:</b>
   <%= @photo.dt %>
 </p>
 
+<p>
+ 
+  <%= image_tag @photo.image.url %>
+</p>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %>

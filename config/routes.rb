@@ -1,7 +1,10 @@
 PhotoJournal::Application.routes.draw do
+
+  root :to => 'photos#index' 
   devise_for :users
 
   resources :photos
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

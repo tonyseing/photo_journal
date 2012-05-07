@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<script>
+$(function(){
+                $("#slides").slides({
+					/* preload: true,
+					preloadImage: '/assets/loading.gif', */
+					play: 1500,
+					pause: 500,
+					hoverPause: true
+
+                });
+            });
+</script>
+<div id="main_slide_container">
+ 		<div id="slides">
+            <div class="slides_container">
+                <% @photos.each do |photo| %>
+					    <div>
+                    		<%= image_tag photo.image.url, :class => 'show_image' %>
+                		</div>
+					   
+				<% end %><%  %>
+               
+                <% %>
+            </div>
+            <a href="#" class="prev"><img src="/assets/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+			<a href="#" class="next"><img src="/assets/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+        </div>
+</div>
+<%= link_to 'Back', :controller => 'photos', :action => 'public_user_index', :username => params[:username] %>

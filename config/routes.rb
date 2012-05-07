@@ -4,6 +4,7 @@ PhotoJournal::Application.routes.draw do
   root :to => 'photos#index'
   resources :photos
 
+  match '/:username/slideshow' => 'photos#slideshow'
   match '/:username/' => 'photos#public_user_index'
   match '/:username/:id' => 'photos#public_user_show'
  

@@ -30,3 +30,35 @@ img.show_image
 	width: 50%;
 	height: 50%;
 }
+
+// slides
+div.slides_container {
+                width:750px;
+                height:970px;
+}
+
+div.slides_container div {
+                width:750px;
+                height:970px;
+                display:block;
+}
+
+div.slides_control
+{
+	 width: 750px;
+	 height: 970px;
+}
+
+div.slides_container img
+{
+	-moz-box-shadow: 10px 10px 5px  #888;
+	-webkit-box-shadow: 10px 10px 5px  #888;
+	box-shadow: 10px 10px 5px  #888;
+}
+
+div#main_slide_container
+{
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}

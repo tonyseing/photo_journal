@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!, :except => ['public_user_index','public_user_show']
+  before_filter :authenticate_user!, :except => ['public_user_index','public_user_show','slideshow']
 
   # GET /photos
   # GET /photos.json
@@ -20,6 +20,14 @@ class PhotosController < ApplicationController
     end
   end
 
+  def slideshow
+    @photos = User.first(conditions: { username: params[:username] }).photos.all.sort { |x,y| x.dt <=> y.dt }
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @photos }
+    end
+  end
 
   # GET /photos/1
   # GET /photos/1.json

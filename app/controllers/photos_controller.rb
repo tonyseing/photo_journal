@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-      @photos = current_user.photos.all
+      @photos = current_user.photos.all.sort { |x,y| x.dt <=> y.dt }
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @photos }
@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
   end
 
   def public_user_index
-    @photos = User.first(conditions: { username: params[:username] }).photos.all
+    @photos = User.first(conditions: { username: params[:username] }).photos.all.sort { |x,y| x.dt <=> y.dt }
 
     respond_to do |format|
       format.html # index.html.erb

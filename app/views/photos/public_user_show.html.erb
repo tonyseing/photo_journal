@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<p>
+  <b>Date:</b>
+  <%= @photo.dt %>
+</p>
+
+<p>
+ 
+  <%= image_tag @photo.image.url, :class => 'show_image' %>
+</p>
+
+<%= link_to 'Back', :controller => 'photos', :action => 'public_user_index', :username => params[:username] %>

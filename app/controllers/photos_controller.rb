@@ -1,16 +1,25 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!, :except => ['show']
+  before_filter :authenticate_user!, :except => ['public_user_index','public_user_show']
 
   # GET /photos
   # GET /photos.json
   def index
-    @photos = current_user.photos.all
+      @photos = current_user.photos.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @photos }
+    end
+  end
+
+  def public_user_index
+    @photos = User.first(conditions: { username: params[:username] }).photos.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @photos }
     end
   end
+
 
   # GET /photos/1
   # GET /photos/1.json
@@ -22,6 +31,18 @@ class PhotosController < ApplicationController
       format.json { render json: @photo }
     end
   end
+
+   # GET /photos/1
+  # GET /photos/1.json
+  def public_user_show
+    @photo = User.first(conditions: { username: params[:username] }).photos.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @photo }
+    end
+  end
+
 
   # GET /photos/new
   # GET /photos/new.json

@@ -1,9 +1,13 @@
 PhotoJournal::Application.routes.draw do
-
-  root :to => 'photos#index' 
   devise_for :users
 
+  root :to => 'photos#index'
   resources :photos
+
+  match '/:username/' => 'photos#public_user_index'
+  match '/:username/:id' => 'photos#public_user_show'
+ 
+
   
 
   # The priority is based upon order of creation:

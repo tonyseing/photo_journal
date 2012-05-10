@@ -8,8 +8,8 @@
 </head>
 <body>
 	<% if user_signed_in? %>
-		<%= link_to "Home", photos_path %> | <%= link_to 'Public Page', :controller => 'photos', :action => 'public_user_index', :username => current_user.username %> | <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-	<% end %> | <%= link_to 'Slideshow', :controller => 'photos', :action => 'slideshow', :username => current_user.username %>
+		<%= link_to "Home", photos_path %> | <%= link_to 'Public Page', :controller => 'photos', :action => 'public_user_index', :username => current_user.username %> | <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>  | <%= link_to 'Slideshow', :controller => 'photos', :action => 'slideshow', :username => current_user.username %>
+	<% end %>
 <div id="container">
 <%= yield %>
 </div>

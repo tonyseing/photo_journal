@@ -24,6 +24,10 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
+
+  # friends
+  field :friends, :type => Array, :default => []
+
   ## Encryptable
   # field :password_salt, :type => String
 
@@ -42,4 +46,29 @@ class User
   # field :authentication_token, :type => String
 
   embeds_many :photos
+
+
+  def make_friends(friend)
+    self.add_friend(friend)
+    friend.add_friend(self)
+  end
+
+  def friends
+    ids = read_attribute :friends
+    ids.map { |id|  User.find(id)}
+  end
+
+  def is_friends_with? other_user
+    ids = read_attribute :friends
+    ids.include? other_user.id
+  end
+
+protected
+
+  def add_friend(friend)
+    current = read_attribute :friends
+    current<< friend.id
+    write_attribute :friends,current
+    save
+  end
 end
